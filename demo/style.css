@@ -1,0 +1,124 @@
+@charset "UTF-8";
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  outline: 0;
+  font-size: 12px;
+}
+
+body {
+  background: #f4f4f4;
+}
+
+a {
+  text-decoration: none;
+  font-size: 44px;
+  color: #08c;
+}
+a:hover {
+  color: #333;
+  cursor: pointer;
+}
+
+.lay01 {
+  background: #1875e7;
+  border: 1px #ddd solid;
+}
+.lay01 a {
+  font-family: 'Microsoft Yahei';
+  color: #ddd;
+  font-size: 15px;
+}
+.lay01 label {
+  background: red;
+  font-size: 12px;
+  display: block;
+  width: 100px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+}
+.lay01 .lay01-1 {
+  width: 100px;
+  height: 100px;
+  background: yellow;
+}
+.lay01 .lay01-1 h1 {
+  font-size: 20px;
+  color: green;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+h3 {
+  font-size: 1.2em;
+}
+
+.item-1 {
+  width: 2em;
+}
+
+.item-2 {
+  width: 4em;
+}
+
+.item-3 {
+  width: 6em;
+}
+
+.puma-icon {
+  background-image: url("/images/puma.png");
+  border: 2px solid black;
+  cursor: default;
+}
+
+.sea-slug-icon {
+  background-image: url("/images/sea-slug.png");
+  border: 2px solid blue;
+  cursor: pointer;
+}
+
+.egret-icon {
+  background-image: url("/images/egret.png");
+  border: 2px solid white;
+  cursor: move;
+}
+
+/* @at-root跳出嵌套
+默认@at-root只会跳出选择器嵌套，而不能跳出@media或@support，如果要跳出这两种，则需使用@at-root (without: media)，@at-root (without: support) */
+.parent-3 {
+  background: #f00;
+}
+.child1 {
+  width: 300px;
+}
+
+.child2 {
+  width: 400px;
+}
+
+/* @at-root 和 & 一起使用的时候 */
+.parent .child {
+  color: #f00;
+}
+
+/* animation */
+.demo {
+  animation: motion 3s infinite;
+}
+
+/* @media */
+@media only screen and (max-width: 480px) {
+  h1 {
+    color: red;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

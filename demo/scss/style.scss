@@ -1,0 +1,141 @@
+*{
+  padding: 0;
+  margin: 0;
+  border: 0;
+  outline: 0;
+  font-size: 12px;
+}
+
+body{
+  background: #f4f4f4
+}
+
+
+
+
+  // 变量
+  $blue: #1875e7;
+
+  // 一维数组
+  $colors: #08c #333;
+
+  a{
+    text-decoration: none;
+    font-size: 44px;
+    color: nth($colors,1);
+    &:hover
+      {
+        color:nth($colors,2);
+        cursor: pointer;
+      }
+  }
+
+
+  // 代码块
+  @mixin font1{
+    font-family: 'Microsoft Yahei';
+    color: #ddd;
+  }
+
+
+  // 嵌套
+  .lay01{
+    background: $blue;
+    border: 1px #ddd solid;
+    a{
+      @include font1;
+      // 计算
+      font-size: 16px - 1px;
+    }
+    label{
+      background: red;
+      font-size: 12px;
+      display: block;
+      width: 100px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+    }
+    .lay01-1{
+      width: 100px;
+      height: 100px;
+      background: yellow;
+      h1{
+        font-size: 20px;
+        color: green;
+      }
+    }
+
+  }
+
+
+
+  // each循环
+  $headings: (h1: 2em, h2: 1.5em, h3: 1.2em); //map
+  @each $header, $size in $headings {
+    #{$header} {
+      font-size: $size;
+    }
+  }
+
+
+  // for循环
+  @for $i from 1 through 3 {
+    .item-#{$i} { width: 2em * $i; }
+  }
+
+
+  // 多个字段的数据循环
+  $animal-data: (puma, black, default),(sea-slug, blue, pointer),(egret, white, move);
+  @each $animal, $color, $cursor in $animal-data {
+    .#{$animal}-icon {
+      background-image: url('/images/#{$animal}.png');
+      border: 2px solid $color;
+      cursor: $cursor;
+    }
+  }
+
+  /* @at-root跳出嵌套
+  默认@at-root只会跳出选择器嵌套，而不能跳出@media或@support，如果要跳出这两种，则需使用@at-root (without: media)，@at-root (without: support) */
+  .parent-3 {
+    background:#f00;
+    @at-root {
+      .child1 {
+        width:300px;
+      }
+      .child2 {
+        width:400px;
+      }
+    }
+  }
+
+  /* @at-root 和 & 一起使用的时候 */
+  .child{
+      @at-root .parent &{
+          color:#f00;
+      }
+  }
+
+
+  /* animation */
+  .demo {
+      // ...
+      animation: motion 3s infinite;
+
+      @at-root {
+          @keyframes motion {
+            //  ...
+          }
+      }
+  }
+
+  /* @media */
+  @mixin max-screen($res){
+    @media only screen and ( max-width: $res )
+    {
+      @content;
+    }
+  }
+  @include max-screen(480px) {
+    h1 { color: red }
+  }
